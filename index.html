@@ -8,20 +8,488 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2335745b%22 stroke-width=%222%22><path d=%22M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-:root{--bg:#f7f6f2;--paper:#fff;--ink:#20251f;--muted:#8b9088;--line:#ebece7;--green:#35745b;--pale:#eaf2ed;--orange:#d88655;--shadow:0 12px 40px #24352a0a}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px 'DM Sans',sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}.shell{max-width:1120px;margin:auto;padding:34px 40px 54px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:44px}.brand{display:flex;align-items:center;gap:12px;font:800 21px Manrope,sans-serif;letter-spacing:-.7px}.logo{width:38px;height:38px;border-radius:13px;background:var(--green);display:grid;place-items:center;color:#fff}.logo svg{width:21px}.top-right{display:flex;gap:12px;align-items:center}.today-label{color:var(--muted);font-size:13px}.avatar{width:38px;height:38px;border-radius:50%;background:#e5d7c8;color:#785e4a;display:grid;place-items:center;font-weight:700}.intro{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}.eyebrow{color:var(--green);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 10px}.intro h1{font:700 clamp(28px,4vw,40px) Manrope,sans-serif;letter-spacing:-1.6px;margin:0}.sub{color:var(--muted);margin:10px 0 0}.add{border:0;background:var(--green);color:white;border-radius:12px;padding:13px 18px;font-weight:700;box-shadow:0 5px 14px #35745b26}.add:hover{background:#2d624d;transform:translateY(-1px)}.plus{font-size:20px;vertical-align:-1px;margin-right:7px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}.stat{background:var(--paper);border:1px solid #eff0eb;border-radius:16px;padding:19px 21px;display:flex;align-items:center;gap:15px;box-shadow:var(--shadow)}.stat-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center}.stat-icon svg{width:20px}.stat:nth-child(1) .stat-icon{background:#edf3ee;color:var(--green)}.stat:nth-child(2) .stat-icon{background:#fff2e9;color:#cc7845}.stat:nth-child(3) .stat-icon{background:#f0eff8;color:#7772a7}.stat-num{font:800 24px Manrope,sans-serif;letter-spacing:-1px}.stat-label{color:var(--muted);font-size:12px;margin-top:2px}.panel{background:var(--paper);border:1px solid #eff0eb;border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.panel-head{padding:22px 25px 0;display:flex;align-items:center;justify-content:space-between}.panel-head h2{font:700 17px Manrope;margin:0}.count{color:var(--muted);font-size:12px;margin-left:8px}.filters{display:flex;gap:5px;padding:19px 24px 14px;border-bottom:1px solid var(--line)}.filter{border:0;background:transparent;color:#777d75;padding:8px 13px;border-radius:9px;font-size:13px;font-weight:600}.filter.active{background:var(--pale);color:var(--green)}.list{padding:4px 24px 14px}.item{display:grid;grid-template-columns:24px minmax(0,1fr) auto 28px;gap:14px;align-items:center;padding:17px 0;border-bottom:1px solid #f0f1ed}.item:last-child{border-bottom:0}.check{width:21px;height:21px;border:1.6px solid #cbd1c9;border-radius:7px;background:white;display:grid;place-items:center;color:white;padding:0}.check:hover{border-color:var(--green)}.item.done .check{background:var(--green);border-color:var(--green)}.check svg{width:13px}.title{font-weight:600;font-size:14px}.item.done .title{text-decoration:line-through;color:#9ba099}.meta{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:12px;margin-top:5px}.dot{width:5px;height:5px;border-radius:50%;background:#c5cbc2}.tag{display:inline-block;background:#f3f4f0;padding:4px 9px;border-radius:20px;color:#777d75;font-size:11px;font-weight:600}.time{font-size:12px;color:#6e756d;white-space:nowrap}.time strong{display:block;font:700 13px Manrope;color:#333a33;text-align:right}.time span{display:block;text-align:right;margin-top:3px;color:var(--muted);font-size:11px}.more{border:0;background:transparent;color:#9aa098;font-size:20px;padding:5px}.more:hover{color:#333}.empty{text-align:center;color:var(--muted);padding:45px 20px}.empty strong{display:block;color:var(--ink);font:700 16px Manrope;margin-bottom:7px}.footer{padding:16px 25px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;background:#252d27;color:white;padding:12px 17px;border-radius:11px;font-size:13px;transition:.25s;pointer-events:none;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-back{position:fixed;inset:0;background:#17201870;display:none;align-items:center;justify-content:center;padding:18px;z-index:4}.modal-back.open{display:flex}.modal{background:white;border-radius:20px;width:min(100%,440px);padding:26px;box-shadow:0 24px 80px #0003}.modal h2{font:700 21px Manrope;margin:0 0 5px}.modal p{color:var(--muted);font-size:13px;margin:0 0 22px}.field{margin-bottom:15px}.field label{display:block;font-size:12px;font-weight:700;color:#60685f;margin-bottom:7px}.field input,.field select{width:100%;border:1px solid #e4e7e1;border-radius:10px;padding:12px;color:var(--ink);background:white;outline:none}.field input:focus,.field select:focus{border-color:var(--green);box-shadow:0 0 0 3px #35745b16}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;justify-content:end;gap:9px;margin-top:22px}.cancel,.save{padding:11px 15px;border-radius:10px;font-weight:700;border:0}.cancel{background:#f3f4f0;color:#666}.save{background:var(--green);color:white}.delete{border:0;background:none;color:#bb564c;font-size:12px;font-weight:600}.bell{background:none;border:1px solid var(--line);border-radius:10px;color:#687168;padding:9px 12px;font-size:12px}.bell:hover{border-color:#b7c7bc}
+:root{--bg:#f7f6f2;--paper:#fff;--ink:#20251f;--muted:#8b9088;--line:#ebece7;--green:#35745b;--pale:#eaf2ed;--orange:#d88655;--shadow:0 12px 40px #24352a0a}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px 'DM Sans',sans-serif;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{max-width:1120px;margin:auto;padding:34px 40px 54px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:44px}.brand{display:flex;align-items:center;gap:12px;font:800 21px Manrope,sans-serif;letter-spacing:-.7px}.logo{width:38px;height:38px;border-radius:13px;background:var(--green);display:grid;place-items:center;color:#fff}.logo svg{width:21px}.top-right{display:flex;gap:12px;align-items:center}.today-label{color:var(--muted);font-size:13px}.avatar{width:38px;height:38px;border-radius:50%;background:#e5d7c8;color:#785e4a;display:grid;place-items:center;font-weight:700}.intro{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}.eyebrow{color:var(--green);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 10px}.intro h1{font:700 clamp(28px,4vw,40px) Manrope,sans-serif;letter-spacing:-1.6px;margin:0}.sub{color:var(--muted);margin:10px 0 0}.add{border:0;background:var(--green);color:white;border-radius:12px;padding:13px 18px;font-weight:700;box-shadow:0 5px 14px #35745b26}.add:hover{background:#2d624d;transform:translateY(-1px)}.plus{font-size:20px;vertical-align:-1px;margin-right:7px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:30px}.stat{background:var(--paper);border:1px solid #eff0eb;border-radius:16px;padding:19px 21px;display:flex;align-items:center;gap:15px;box-shadow:var(--shadow)}.stat-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center}.stat-icon svg{width:20px}.stat:nth-child(1) .stat-icon{background:#edf3ee;color:var(--green)}.stat:nth-child(2) .stat-icon{background:#fff2e9;color:#cc7845}.stat:nth-child(3) .stat-icon{background:#f0eff8;color:#7772a7}.stat-num{font:800 24px Manrope,sans-serif;letter-spacing:-1px}.stat-label{color:var(--muted);font-size:12px;margin-top:2px}.panel{background:var(--paper);border:1px solid #eff0eb;border-radius:18px;box-shadow:var(--shadow);overflow:hidden}.panel-head{padding:22px 25px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}.panel-head h2{font:700 17px Manrope;margin:0}.panel-actions{display:flex;gap:8px;align-items:center}.count{color:var(--muted);font-size:12px;margin-left:8px}.filters{display:flex;gap:5px;padding:19px 24px 14px;border-bottom:1px solid var(--line)}.filter{border:0;background:transparent;color:#777d75;padding:8px 13px;border-radius:9px;font-size:13px;font-weight:600}.filter.active{background:var(--pale);color:var(--green)}.list{padding:4px 24px 14px}.item{display:grid;grid-template-columns:24px minmax(0,1fr) auto 28px;gap:14px;align-items:center;padding:17px 0;border-bottom:1px solid #f0f1ed}.item:last-child{border-bottom:0}.check{width:21px;height:21px;border:1.6px solid #cbd1c9;border-radius:7px;background:white;display:grid;place-items:center;color:white;padding:0}.check:hover{border-color:var(--green)}.item.done .check{background:var(--green);border-color:var(--green)}.check svg{width:13px}.title{font-weight:600;font-size:14px}.item.done .title{text-decoration:line-through;color:#9ba099}.meta{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:12px;margin-top:5px}.dot{width:5px;height:5px;border-radius:50%;background:#c5cbc2}.tag{display:inline-block;background:#f3f4f0;padding:4px 9px;border-radius:20px;color:#777d75;font-size:11px;font-weight:600}.time{font-size:12px;color:#6e756d;white-space:nowrap}.time strong{display:block;font:700 13px Manrope;color:#333a33;text-align:right}.time span{display:block;text-align:right;margin-top:3px;color:var(--muted);font-size:11px}.more{border:0;background:transparent;color:#9aa098;font-size:20px;padding:5px}.more:hover{color:#333}.empty{text-align:center;color:var(--muted);padding:45px 20px}.empty strong{display:block;color:var(--ink);font:700 16px Manrope;margin-bottom:7px}.footer{padding:16px 25px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;background:#252d27;color:white;padding:12px 17px;border-radius:11px;font-size:13px;transition:.25s;pointer-events:none;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-back{position:fixed;inset:0;background:#17201870;display:none;align-items:center;justify-content:center;padding:18px;z-index:4}.modal-back.open{display:flex}.modal{background:white;border-radius:20px;width:min(100%,460px);padding:26px;box-shadow:0 24px 80px #0003;max-height:90vh;overflow-y:auto}.modal h2{font:700 21px Manrope;margin:0 0 5px}.modal p{color:var(--muted);font-size:13px;margin:0 0 22px}.field{margin-bottom:15px}.field label{display:block;font-size:12px;font-weight:700;color:#60685f;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;border:1px solid #e4e7e1;border-radius:10px;padding:12px;color:var(--ink);background:white;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px #35745b16}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;justify-content:end;gap:9px;margin-top:22px}.cancel,.save{padding:11px 15px;border-radius:10px;font-weight:700;border:0}.cancel{background:#f3f4f0;color:#666}.save{background:var(--green);color:white}.bell{background:none;border:1px solid var(--line);border-radius:10px;color:#687168;padding:9px 12px;font-size:12px}.bell:hover{border-color:#b7c7bc}.db-pill{background:#f0f1ed;border:1px solid #e2e4dc;border-radius:20px;padding:6px 12px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:7px;color:#4c544c;text-decoration:none}.db-pill:hover{background:#e7e9e4}.db-dot{width:8px;height:8px;border-radius:50%;background:#e59834}.db-pill.connected .db-dot{background:#2fa859}.guide-box{background:#f8f9f6;border:1px solid #ebece6;border-radius:12px;padding:12px 14px;font-size:12px;color:#555d54;margin-bottom:16px;line-height:1.5}.guide-box ol{margin:6px 0 0;padding-left:18px}.guide-box li{margin-bottom:4px}
 @media(max-width:680px){.shell{padding:22px 16px 36px}.top{margin-bottom:32px}.today-label{display:none}.intro{align-items:start;gap:15px;flex-direction:column}.add{align-self:stretch}.stats{gap:8px}.stat{padding:14px 11px;gap:9px;align-items:start;flex-direction:column}.stat-icon{width:34px;height:34px}.stat-num{font-size:21px}.stat-label{font-size:10px}.panel-head{padding:18px 17px 0}.filters{padding:15px 12px 12px;overflow:auto}.filter{padding:8px 11px;white-space:nowrap}.list{padding:2px 16px 10px}.item{grid-template-columns:22px minmax(0,1fr) auto;gap:10px;padding:15px 0}.item .more{display:none}.time{grid-column:3;grid-row:1}.title{font-size:13px}.meta{font-size:11px}.footer{padding:14px 17px}.row{gap:9px}}
 </style>
+<!-- Firebase SDK CDN -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 </head>
 <body>
 <div class="shell">
-<header class="top"><div class="brand"><div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>ingat<span style="color:var(--green)">.</span></div><div class="top-right"><span class="today-label" id="todayLabel"></span><div class="avatar">A</div></div></header>
-<main><section class="intro"><div><p class="eyebrow">Ruang harimu</p><h1>Hai, jangan lupa ya.</h1><p class="sub">Satu langkah kecil hari ini, bikin semuanya lebih ringan.</p></div><button class="add" id="addBtn"><span class="plus">＋</span>Tambah pengingat</button></section>
-<section class="stats"><div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg></div><div><div class="stat-num" id="statToday">0</div><div class="stat-label">Pengingat hari ini</div></div></div><div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg></div><div><div class="stat-num" id="statPending">0</div><div class="stat-label">Belum selesai</div></div></div><div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7 10 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9" stroke-linecap="round"/></svg></div><div><div class="stat-num" id="statDone">0</div><div class="stat-label">Sudah selesai</div></div></div></section>
-<section class="panel"><div class="panel-head"><h2>Daftar pengingat <span class="count" id="totalCount"></span></h2><button class="bell" id="notifyBtn">Aktifkan notifikasi</button></div><nav class="filters" aria-label="Filter pengingat"><button class="filter active" data-filter="all">Semua</button><button class="filter" data-filter="today">Hari ini</button><button class="filter" data-filter="upcoming">Mendatang</button><button class="filter" data-filter="done">Selesai</button></nav><div class="list" id="list"></div><div class="footer" id="footerText">Pengingatmu tersimpan otomatis di perangkat ini.</div></section></main></div>
+<header class="top">
+  <div class="brand">
+    <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    ingat<span style="color:var(--green)">.</span>
+  </div>
+  <div class="top-right">
+    <button id="dbPillBtn" class="db-pill" title="Status Database Antar Perangkat">
+      <span class="db-dot" id="dbDot"></span>
+      <span id="dbStatusText">Memeriksa Database...</span>
+    </button>
+    <span class="today-label" id="todayLabel"></span>
+    <div class="avatar">A</div>
+  </div>
+</header>
+<main>
+  <section class="intro">
+    <div>
+      <p class="eyebrow">Ruang harimu</p>
+      <h1>Hai, jangan lupa ya.</h1>
+      <p class="sub">Semua jadwal tersinkronisasi otomatis antar semua perangkat & komputer.</p>
+    </div>
+    <button class="add" id="addBtn"><span class="plus">＋</span>Tambah pengingat</button>
+  </section>
+  <section class="stats">
+    <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg></div><div><div class="stat-num" id="statToday">0</div><div class="stat-label">Pengingat hari ini</div></div></div>
+    <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg></div><div><div class="stat-num" id="statPending">0</div><div class="stat-label">Belum selesai</div></div></div>
+    <div class="stat"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7 10 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9" stroke-linecap="round"/></svg></div><div><div class="stat-num" id="statDone">0</div><div class="stat-label">Sudah selesai</div></div></div>
+  </section>
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Daftar pengingat <span class="count" id="totalCount"></span></h2>
+      <div class="panel-actions">
+        <button class="bell" id="notifyBtn">Aktifkan notifikasi</button>
+      </div>
+    </div>
+    <nav class="filters" aria-label="Filter pengingat">
+      <button class="filter active" data-filter="all">Semua</button>
+      <button class="filter" data-filter="today">Hari ini</button>
+      <button class="filter" data-filter="upcoming">Mendatang</button>
+      <button class="filter" data-filter="done">Selesai</button>
+    </nav>
+    <div class="list" id="list"></div>
+    <div class="footer">
+      <span id="footerText">Sinkronisasi Cloud Aktif. Jadwal aman di semua komputer.</span>
+      <button class="db-pill" id="footerDbBtn" style="font-size:11px;padding:4px 9px">Pengaturan Database</button>
+    </div>
+  </section>
+</main>
+</div>
+
 <div class="toast" id="toast"></div>
-<div class="modal-back" id="modalBack"><form class="modal" id="reminderForm"><h2 id="modalTitle">Pengingat baru</h2><p>Catat hal kecil yang ingin kamu ingat.</p><div class="field"><label for="remTitle">Apa yang perlu diingat?</label><input id="remTitle" maxlength="100" required placeholder="Contoh: Minum vitamin"></div><div class="row"><div class="field"><label for="remDate">Tanggal</label><input type="date" id="remDate" required></div><div class="field"><label for="remTime">Waktu</label><input type="time" id="remTime" required></div></div><div class="field"><label for="remCategory">Kategori</label><select id="remCategory"><option>Pribadi</option><option>Pekerjaan</option><option>Kesehatan</option><option>Belanja</option><option>Lainnya</option></select></div><div class="actions"><button type="button" class="cancel" id="cancelBtn">Batal</button><button class="save" type="submit">Simpan pengingat</button></div></form></div>
+
+<!-- Modal Tambah/Edit Pengingat -->
+<div class="modal-back" id="modalBack">
+  <form class="modal" id="reminderForm">
+    <h2 id="modalTitle">Pengingat baru</h2>
+    <p>Catat hal kecil yang ingin kamu ingat.</p>
+    <div class="field"><label for="remTitle">Apa yang perlu diingat?</label><input id="remTitle" maxlength="100" required placeholder="Contoh: Minum vitamin"></div>
+    <div class="row">
+      <div class="field"><label for="remDate">Tanggal</label><input type="date" id="remDate" required></div>
+      <div class="field"><label for="remTime">Waktu</label><input type="time" id="remTime" required></div>
+    </div>
+    <div class="field">
+      <label for="remCategory">Kategori</label>
+      <select id="remCategory">
+        <option>Pribadi</option>
+        <option>Pekerjaan</option>
+        <option>Kesehatan</option>
+        <option>Belanja</option>
+        <option>Lainnya</option>
+      </select>
+    </div>
+    <div class="actions">
+      <button type="button" class="cancel" id="cancelBtn">Batal</button>
+      <button class="save" type="submit">Simpan pengingat</button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal Pengaturan Database Firebase -->
+<div class="modal-back" id="dbModalBack">
+  <div class="modal">
+    <h2>Database Antar Perangkat</h2>
+    <p>Hubungkan Firebase Firestore agar jadwal tersimpan di cloud dan otomatis muncul di komputer/HP mana saja.</p>
+    <div class="guide-box">
+      <strong>Cara dapatkan konfigurasi gratis (2 menit):</strong>
+      <ol>
+        <li>Buka <a href="https://console.firebase.google.com/" target="_blank" style="color:var(--green);font-weight:700">Firebase Console</a> (login akun Google).</li>
+        <li>Buat proyek baru, lalu pilih <strong>Firestore Database</strong> -> klik <strong>Create database</strong> -> pilih <strong>Start in test mode</strong>.</li>
+        <li>Pilih ikon Web (<strong>&lt;/&gt;</strong>) untuk daftarkan aplikasi, lalu salin kode <code>firebaseConfig</code> ke bawah ini (atau simpan di berkas <code>firebase-config.js</code>).</li>
+      </ol>
+    </div>
+    <form id="dbConfigForm">
+      <div class="field">
+        <label for="cfgApiKey">API Key</label>
+        <input id="cfgApiKey" required placeholder="AIzaSy...">
+      </div>
+      <div class="field">
+        <label for="cfgProjectId">Project ID</label>
+        <input id="cfgProjectId" required placeholder="reminder-app-xxxx">
+      </div>
+      <div class="field">
+        <label for="cfgAppId">App ID (Opsional)</label>
+        <input id="cfgAppId" placeholder="1:123456789:web:abcdef">
+      </div>
+      <div class="actions">
+        <button type="button" class="cancel" id="dbCancelBtn">Tutup</button>
+        <button class="save" type="submit">Simpan & Hubungkan</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script>
-const KEY='ingat-reminders-v1';let reminders=load();let filter='all';let editing=null;const $=s=>document.querySelector(s);const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};function load(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch{return []}}function persist(){localStorage.setItem(KEY,JSON.stringify(reminders));render()}function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function friendlyDate(v){if(v===today())return 'Hari ini';const d=new Date(v+'T12:00:00');const x=new Date(today()+'T12:00:00');if(v===new Date(x.getTime()+86400000).toISOString().slice(0,10))return 'Besok';return new Intl.DateTimeFormat('id-ID',{day:'numeric',month:'short'}).format(d)}function render(){const now=today();const pending=reminders.filter(x=>!x.done);$('#statToday').textContent=pending.filter(x=>x.date===now).length;$('#statPending').textContent=pending.length;$('#statDone').textContent=reminders.filter(x=>x.done).length;$('#totalCount').textContent=`${reminders.length} item`;let items=reminders.filter(x=>filter==='all'||filter==='today'&&x.date===now||filter==='upcoming'&&!x.done&&x.date>now||filter==='done'&&x.done).sort((a,b)=>a.done-b.done||a.date.localeCompare(b.date)||a.time.localeCompare(b.time));const list=$('#list');if(!items.length){list.innerHTML=`<div class="empty"><strong>${filter==='done'?'Belum ada yang selesai':'Belum ada pengingat di sini'}</strong>${filter==='all'?'Tambahkan pengingat pertamamu supaya hal penting tak terlewat.':'Coba pilih filter lain atau buat pengingat baru.'}</div>`;return}list.innerHTML=items.map(x=>`<article class="item ${x.done?'done':''}" data-id="${x.id}"><button class="check" aria-label="${x.done?'Tandai belum selesai':'Tandai selesai'}" data-action="toggle">${x.done?'<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 8 3.2 3.2L13 4.5"/></svg>':''}</button><div><div class="title">${escapeHtml(x.title)}</div><div class="meta"><span>${friendlyDate(x.date)}</span><span class="dot"></span><span class="tag">${escapeHtml(x.category)}</span></div></div><div class="time"><strong>${escapeHtml(x.time)}</strong><span>${x.date<now&&!x.done?'Terlambat':''}</span></div><button class="more" aria-label="Opsi pengingat" data-action="menu">···</button></article>`).join('')}
-function generateId(){return(window.crypto&&crypto.randomUUID)?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2))}
-function openModal(item){editing=item?.id||null;$('#modalTitle').textContent=editing?'Ubah pengingat':'Pengingat baru';$('#remTitle').value=item?.title||'';$('#remDate').value=item?.date||today();$('#remTime').value=item?.time||'09:00';$('#remCategory').value=item?.category||'Pribadi';$('#modalBack').classList.add('open');$('#remTitle').focus()}function closeModal(){$('#modalBack').classList.remove('open');$('#reminderForm').reset();editing=null}function toast(s){const el=$('#toast');el.textContent=s;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2400)}$('#todayLabel').textContent=new Intl.DateTimeFormat('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date());$('#addBtn').onclick=()=>openModal();$('#cancelBtn').onclick=closeModal;$('#modalBack').onclick=e=>{if(e.target===$('#modalBack'))closeModal()};document.onkeydown=e=>{if(e.key==='Escape')closeModal()};document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelector('.filter.active').classList.remove('active');b.classList.add('active');filter=b.dataset.filter;render()});$('#reminderForm').onsubmit=e=>{e.preventDefault();const data={id:editing||generateId(),title:$('#remTitle').value.trim(),date:$('#remDate').value,time:$('#remTime').value,category:$('#remCategory').value,done:editing?reminders.find(x=>x.id===editing).done:false};if(editing)reminders=reminders.map(x=>x.id===editing?data:x);else reminders.push(data);persist();closeModal();toast(editing?'Pengingat diperbarui':'Pengingat disimpan')};$('#list').onclick=e=>{const action=e.target.closest('[data-action]')?.dataset.action;const id=e.target.closest('[data-id]')?.dataset.id;if(!action||!id)return;const item=reminders.find(x=>x.id===id);if(action==='toggle'){item.done=!item.done;persist();toast(item.done?'Selesai, bagus!':'Pengingat dibuka kembali')}if(action==='menu'){const choice=prompt('Ketik "ubah" untuk mengedit atau "hapus" untuk menghapus pengingat:');if(choice?.toLowerCase()==='ubah')openModal(item);if(choice?.toLowerCase()==='hapus'&&confirm(`Hapus “${item.title}”?`)){reminders=reminders.filter(x=>x.id!==id);persist();toast('Pengingat dihapus')}}};$('#notifyBtn').onclick=async()=>{if(!('Notification'in window)){toast('Notifikasi tidak didukung browser ini');return}const p=await Notification.requestPermission();if(p==='granted'){toast('Notifikasi diizinkan selama aplikasi terbuka');scheduleNotifications()}else toast('Izin notifikasi belum diberikan')};function scheduleNotifications(){if(!('Notification'in window)||Notification.permission!=='granted')return;const now=Date.now();reminders.filter(x=>!x.done).forEach(x=>{const at=new Date(`${x.date}T${x.time}:00`).getTime();const delay=at-now;if(delay>0&&delay<2147480000)setTimeout(()=>new Notification('Ingat — pengingatmu',{body:x.title}),delay)})}render();if('Notification'in window&&Notification.permission==='granted')scheduleNotifications();
-</script></body></html>
+const LOCAL_STORAGE_KEY = 'ingat-reminders-v1';
+const FIREBASE_LOCAL_KEY = 'ingat-custom-firebase-cfg';
+let reminders = loadLocal();
+let filter = 'all';
+let editing = null;
+let db = null;
+let firestoreUnsubscribe = null;
+
+const $ = s => document.querySelector(s);
+const today = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+};
+
+function loadLocal() {
+  try {
+    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || [];
+  } catch {
+    return [];
+  }
+}
+
+function persistLocal() {
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(reminders));
+  render();
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function friendlyDate(v) {
+  if (v === today()) return 'Hari ini';
+  const d = new Date(v + 'T12:00:00');
+  const x = new Date(today() + 'T12:00:00');
+  if (v === new Date(x.getTime() + 86400000).toISOString().slice(0, 10)) return 'Besok';
+  return new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'short' }).format(d);
+}
+
+function render() {
+  const now = today();
+  const pending = reminders.filter(x => !x.done);
+  $('#statToday').textContent = pending.filter(x => x.date === now).length;
+  $('#statPending').textContent = pending.length;
+  $('#statDone').textContent = reminders.filter(x => x.done).length;
+  $('#totalCount').textContent = `${reminders.length} item`;
+
+  let items = reminders.filter(x => 
+    filter === 'all' ||
+    (filter === 'today' && x.date === now) ||
+    (filter === 'upcoming' && !x.done && x.date > now) ||
+    (filter === 'done' && x.done)
+  ).sort((a, b) => a.done - b.done || a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
+
+  const list = $('#list');
+  if (!items.length) {
+    list.innerHTML = `<div class="empty"><strong>${filter === 'done' ? 'Belum ada yang selesai' : 'Belum ada pengingat di sini'}</strong>${filter === 'all' ? 'Tambahkan pengingat pertamamu supaya hal penting tak terlewat.' : 'Coba pilih filter lain atau buat pengingat baru.'}</div>`;
+    return;
+  }
+
+  list.innerHTML = items.map(x => `
+    <article class="item ${x.done ? 'done' : ''}" data-id="${x.id}">
+      <button class="check" aria-label="${x.done ? 'Tandai belum selesai' : 'Tandai selesai'}" data-action="toggle">
+        ${x.done ? '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 8 3.2 3.2L13 4.5"/></svg>' : ''}
+      </button>
+      <div>
+        <div class="title">${escapeHtml(x.title)}</div>
+        <div class="meta">
+          <span>${friendlyDate(x.date)}</span>
+          <span class="dot"></span>
+          <span class="tag">${escapeHtml(x.category || 'Pribadi')}</span>
+        </div>
+      </div>
+      <div class="time">
+        <strong>${escapeHtml(x.time)}</strong>
+        <span>${x.date < now && !x.done ? 'Terlambat' : ''}</span>
+      </div>
+      <button class="more" aria-label="Opsi pengingat" data-action="menu">···</button>
+    </article>
+  `).join('');
+}
+
+function generateId() {
+  return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : (Date.now().toString(36) + Math.random().toString(36).slice(2));
+}
+
+function toast(s) {
+  const el = $('#toast');
+  el.textContent = s;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 2600);
+}
+
+// Modal Form Reminder
+function openModal(item) {
+  editing = item?.id || null;
+  $('#modalTitle').textContent = editing ? 'Ubah pengingat' : 'Pengingat baru';
+  $('#remTitle').value = item?.title || '';
+  $('#remDate').value = item?.date || today();
+  $('#remTime').value = item?.time || '09:00';
+  $('#remCategory').value = item?.category || 'Pribadi';
+  $('#modalBack').classList.add('open');
+  $('#remTitle').focus();
+}
+
+function closeModal() {
+  $('#modalBack').classList.remove('open');
+  $('#reminderForm').reset();
+  editing = null;
+}
+
+// Modal Form Database
+function openDbModal() {
+  const currentCfg = getActiveFirebaseConfig();
+  if (currentCfg) {
+    $('#cfgApiKey').value = currentCfg.apiKey || '';
+    $('#cfgProjectId').value = currentCfg.projectId || '';
+    $('#cfgAppId').value = currentCfg.appId || '';
+  }
+  $('#dbModalBack').classList.add('open');
+}
+
+function closeDbModal() {
+  $('#dbModalBack').classList.remove('open');
+}
+
+function updateDbBadge(connected, text) {
+  const pill = $('#dbPillBtn');
+  const statusTxt = $('#dbStatusText');
+  const footerTxt = $('#footerText');
+
+  if (connected) {
+    pill.classList.add('connected');
+    statusTxt.textContent = 'Cloud Database Aktif';
+    footerTxt.textContent = 'Sinkronisasi Cloud Aktif. Jadwal aman di semua komputer.';
+  } else {
+    pill.classList.remove('connected');
+    statusTxt.textContent = text || 'Mode Lokal (Klik)';
+    footerTxt.textContent = 'Jadwal masih tersimpan di browser ini saja. Klik untuk sambung Cloud Database.';
+  }
+}
+
+function getActiveFirebaseConfig() {
+  // Cek jika tersimpan di localStorage browser
+  try {
+    const saved = JSON.parse(localStorage.getItem(FIREBASE_LOCAL_KEY));
+    if (saved && saved.apiKey && saved.projectId) return saved;
+  } catch(e) {}
+
+  // Cek jika terdefinisi di firebase-config.js
+  if (typeof window.isFirebaseConfigured === 'function' && window.isFirebaseConfigured()) {
+    return window.firebaseConfig;
+  }
+  return null;
+}
+
+function initFirebase() {
+  const cfg = getActiveFirebaseConfig();
+  if (!cfg) {
+    updateDbBadge(false, 'Mode Lokal (Klik)');
+    render();
+    return;
+  }
+
+  try {
+    if (!firebase.apps.length) {
+      firebase.initializeApp(cfg);
+    }
+    db = firebase.firestore();
+
+    // Hentikan listener lama jika ada
+    if (firestoreUnsubscribe) firestoreUnsubscribe();
+
+    // Dengarkan perubahan real-time dari Firestore
+    firestoreUnsubscribe = db.collection('reminders').onSnapshot(snapshot => {
+      const remoteData = [];
+      snapshot.forEach(doc => {
+        remoteData.push({ id: doc.id, ...doc.data() });
+      });
+      reminders = remoteData;
+      persistLocal();
+      updateDbBadge(true);
+      if ('Notification' in window && Notification.permission === 'granted') {
+        scheduleNotifications();
+      }
+    }, err => {
+      console.warn('Firestore error:', err);
+      updateDbBadge(false, 'Koneksi Error');
+      toast('Gagal terhubung database: ' + err.message);
+    });
+
+  } catch (err) {
+    console.error('Firebase init error:', err);
+    updateDbBadge(false, 'Gagal Inisialisasi');
+  }
+}
+
+// Simpan Reminder (Cloud / Local)
+async function saveReminder(data) {
+  if (db) {
+    try {
+      await db.collection('reminders').doc(data.id).set(data);
+      toast(editing ? 'Pengingat diperbarui (Cloud)' : 'Pengingat disimpan (Cloud)');
+      return;
+    } catch(err) {
+      console.error(err);
+      toast('Gagal simpan ke cloud: ' + err.message);
+    }
+  }
+  // Fallback lokal jika cloud offline / belum dipasang
+  if (editing) {
+    reminders = reminders.map(x => x.id === editing ? data : x);
+  } else {
+    reminders.push(data);
+  }
+  persistLocal();
+  toast(editing ? 'Pengingat diperbarui' : 'Pengingat disimpan');
+}
+
+// Toggle Selesai
+async function toggleReminder(id) {
+  const item = reminders.find(x => x.id === id);
+  if (!item) return;
+  const nextDone = !item.done;
+
+  if (db) {
+    try {
+      await db.collection('reminders').doc(id).update({ done: nextDone });
+      toast(nextDone ? 'Selesai, bagus!' : 'Pengingat dibuka kembali');
+      return;
+    } catch(e) {
+      console.error(e);
+    }
+  }
+  item.done = nextDone;
+  persistLocal();
+  toast(item.done ? 'Selesai, bagus!' : 'Pengingat dibuka kembali');
+}
+
+// Hapus Reminder
+async function deleteReminder(id, title) {
+  if (!confirm(`Hapus “${title}”?`)) return;
+
+  if (db) {
+    try {
+      await db.collection('reminders').doc(id).delete();
+      toast('Pengingat dihapus dari cloud');
+      return;
+    } catch(e) {
+      console.error(e);
+    }
+  }
+  reminders = reminders.filter(x => x.id !== id);
+  persistLocal();
+  toast('Pengingat dihapus');
+}
+
+// Event Listeners
+$('#todayLabel').textContent = new Intl.DateTimeFormat('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }).format(new Date());
+$('#addBtn').onclick = () => openModal();
+$('#cancelBtn').onclick = closeModal;
+$('#modalBack').onclick = e => { if (e.target === $('#modalBack')) closeModal(); };
+
+$('#dbPillBtn').onclick = openDbModal;
+$('#footerDbBtn').onclick = openDbModal;
+$('#dbCancelBtn').onclick = closeDbModal;
+$('#dbModalBack').onclick = e => { if (e.target === $('#dbModalBack')) closeDbModal(); };
+
+document.onkeydown = e => {
+  if (e.key === 'Escape') {
+    closeModal();
+    closeDbModal();
+  }
+};
+
+document.querySelectorAll('.filter').forEach(b => b.onclick = () => {
+  document.querySelector('.filter.active').classList.remove('active');
+  b.classList.add('active');
+  filter = b.dataset.filter;
+  render();
+});
+
+$('#reminderForm').onsubmit = async e => {
+  e.preventDefault();
+  const data = {
+    id: editing || generateId(),
+    title: $('#remTitle').value.trim(),
+    date: $('#remDate').value,
+    time: $('#remTime').value,
+    category: $('#remCategory').value,
+    done: editing ? (reminders.find(x => x.id === editing)?.done || false) : false,
+    updatedAt: new Date().toISOString()
+  };
+  closeModal();
+  await saveReminder(data);
+};
+
+$('#dbConfigForm').onsubmit = e => {
+  e.preventDefault();
+  const cfg = {
+    apiKey: $('#cfgApiKey').value.trim(),
+    authDomain: `${$('#cfgProjectId').value.trim()}.firebaseapp.com`,
+    projectId: $('#cfgProjectId').value.trim(),
+    storageBucket: `${$('#cfgProjectId').value.trim()}.appspot.com`,
+    appId: $('#cfgAppId').value.trim() || undefined
+  };
+  localStorage.setItem(FIREBASE_LOCAL_KEY, JSON.stringify(cfg));
+  closeDbModal();
+  toast('Menghubungkan ke Firebase...');
+  initFirebase();
+};
+
+$('#list').onclick = async e => {
+  const action = e.target.closest('[data-action]')?.dataset.action;
+  const id = e.target.closest('[data-id]')?.dataset.id;
+  if (!action || !id) return;
+  const item = reminders.find(x => x.id === id);
+  if (!item) return;
+
+  if (action === 'toggle') {
+    await toggleReminder(id);
+  }
+  if (action === 'menu') {
+    const choice = prompt('Ketik "ubah" untuk mengedit atau "hapus" untuk menghapus pengingat:');
+    if (choice?.toLowerCase() === 'ubah') openModal(item);
+    if (choice?.toLowerCase() === 'hapus') await deleteReminder(id, item.title);
+  }
+};
+
+$('#notifyBtn').onclick = async () => {
+  if (!('Notification' in window)) {
+    toast('Notifikasi tidak didukung browser ini');
+    return;
+  }
+  const p = await Notification.requestPermission();
+  if (p === 'granted') {
+    toast('Notifikasi diizinkan');
+    scheduleNotifications();
+  } else {
+    toast('Izin notifikasi belum diberikan');
+  }
+};
+
+function scheduleNotifications() {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  const now = Date.now();
+  reminders.filter(x => !x.done).forEach(x => {
+    const at = new Date(`${x.date}T${x.time}:00`).getTime();
+    const delay = at - now;
+    if (delay > 0 && delay < 2147480000) {
+      setTimeout(() => new Notification('Ingat — pengingatmu', { body: x.title }), delay);
+    }
+  });
+}
+
+// Inisialisasi awal
+render();
+initFirebase();
+</script>
+</body>
+</html>

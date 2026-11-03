@@ -1,15 +1,16 @@
 # Ingat — Aplikasi Pengingat Harian (Daily Reminder)
 
-Aplikasi pencatat pengingat harian sederhana, elegan, dan ringan berbasis web. Seluruh data disimpan secara lokal pada browser pengguna (`localStorage`) dan mendukung fitur notifikasi peramban.
+Aplikasi pencatat pengingat harian sederhana, elegan, dan responsif berbasis web. Mendukung **Cloud Database Real-time (Firebase Firestore)** sehingga jadwal otomatis tersinkronisasi di komputer, laptop, dan HP mana saja, serta tetap memiliki fallback penyimpanan lokal (`localStorage`).
 
 ---
 
 ## 🚀 Fitur Utama
-- **Tambah, Ubah & Hapus Pengingat**: Catat nama kegiatan, tanggal, waktu, dan kategori.
-- **Penyimpanan Lokal (Offline-friendly)**: Data tersimpan otomatis di perangkat (`localStorage`).
-- **Filter Pengingat**: Tampilan Semua, Hari ini, Mendatang, dan Selesai.
+- **Cloud Database Real-Time**: Sinkronisasi jadwal otomatis antar perangkat via Firebase Firestore. Perubahan di satu komputer langsung muncul di komputer lain tanpa refresh.
+- **Mode Offline / Lokal**: Tetap dapat digunakan walau tanpa internet atau belum menghubungkan Firebase (`localStorage`).
+- **Indikator Status Database**: Status koneksi langsung terlihat di bagian atas (Cloud Database Aktif / Mode Lokal).
 - **Notifikasi Browser**: Peringatan waktu pengingat saat aplikasi terbuka.
-- **Responsif**: Nyaman digunakan di tampilan ponsel (mobile) maupun desktop.
+- **Filter & Statistik**: Semua, Hari ini, Mendatang, dan Selesai.
+- **Responsif**: Tampilan optimal untuk mobile dan desktop.
 
 ---
 
@@ -17,46 +18,46 @@ Aplikasi pencatat pengingat harian sederhana, elegan, dan ringan berbasis web. S
 ```text
 Reminder/
 ├── index.html          # File utama (entry point Vercel)
-├── reminder-app.html   # Salinan / berkas alternatif
+├── reminder-app.html   # Berkas alternatif / salinan
+├── firebase-config.js  # Konfigurasi Cloud Database Firebase
 ├── vercel.json         # Konfigurasi routing & rewrite Vercel
-├── .gitignore          # Daftar file yang diabaikan git
+├── .gitignore          # File yang diabaikan git
 └── README.md           # Dokumentasi proyek
 ```
 
 ---
 
-## 🌐 Cara Deploy ke Vercel
+## ☁️ Menghubungkan Cloud Database (Firebase)
+Agar jadwal tidak hilang saat dibuka di komputer lain, cukup ikuti langkah gratis berikut:
 
-### Opsi 1: Lewat Dashboard Vercel (Rekomendasi)
-1. Pastikan perubahan ini sudah di-*push* ke repositori GitHub:
-   ```bash
-   git add .
-   git commit -m "Siapkan struktur untuk deploy ke Vercel"
-   git push origin main
+1. Buka [console.firebase.google.com](https://console.firebase.google.com/) dan login dengan akun Google.
+2. Klik **Add project** (contoh nama: `reminder-app`).
+3. Pada menu sebelah kiri:
+   - Pilih **Build** > **Firestore Database**.
+   - Klik **Create database**, pilih lokasi server (misal: `asia-southeast1`), lalu pilih **Start in test mode**.
+4. Kembali ke halaman Project Overview, klik ikon Web (**`</>`**) untuk mendaftarkan web app.
+5. Salin objek `firebaseConfig` yang muncul, lalu tempelkan di file `firebase-config.js`:
+   ```javascript
+   const firebaseConfig = {
+     apiKey: "AIzaSy...",
+     authDomain: "reminder-app.firebaseapp.com",
+     projectId: "reminder-app",
+     storageBucket: "reminder-app.appspot.com",
+     messagingSenderId: "...",
+     appId: "..."
+   };
    ```
-2. Buka [vercel.com](https://vercel.com/) dan login menggunakan akun GitHub.
-3. Klik tombol **"Add New..."** lalu pilih **"Project"**.
-4. Pilih repositori **`Reminder`** (`DimsDwi/Reminder`) lalu klik **"Import"**.
-5. Pada konfigurasi project:
-   - **Framework Preset**: Pilih `Other`
-   - **Root Directory**: `./` (biarkan default)
-   - **Build and Output Settings**: Kosongkan (karena ini web statis HTML)
-6. Klik **"Deploy"**. Selesai! Web Anda akan langsung aktif dengan URL `https://reminder-xxxx.vercel.app`.
-
-### Opsi 2: Lewat Vercel CLI
-Jalankan perintah berikut di terminal:
-```bash
-npx vercel
-```
-Ikuti petunjuk di terminal untuk menghubungkan dan langsung mendeploy. Untuk deployment production:
-```bash
-npx vercel --prod
-```
+   *(Atau bisa juga langsung klik tombol **Pengaturan Database** di pojok kanan atas aplikasi web).*
 
 ---
 
-## 💻 Cara Menjalankan Lokal
-Cukup buka file `index.html` langsung di browser favorit Anda, atau jalankan server lokal seperti Live Server di VS Code atau:
-```bash
-npx serve .
-```
+## 🌐 Deploy ke Vercel
+
+### Lewat GitHub (Otomatis)
+1. Push pembaruan ke GitHub:
+   ```bash
+   git add .
+   git commit -m "Integrasi Cloud Database Firebase Firestore"
+   git push origin main
+   ```
+2. Vercel akan otomatis melakukan build dan redeploy ke domain Anda!
