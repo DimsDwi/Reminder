@@ -1,21 +1,16 @@
-// Konfigurasi Firebase Firestore
-// Dapatkan konfigurasi ini secara gratis di https://console.firebase.google.com/
-// 1. Buat project baru di Firebase Console
-// 2. Tambahkan Web App (ikon </>) lalu copy firebaseConfig ke sini
-// 3. Masuk ke menu Firestore Database -> Create database -> Start in test mode
-
+// Konfigurasi Cloud Database Firebase Firestore
 const firebaseConfig = {
-  apiKey: "PASTE_API_KEY_DISINI",
-  authDomain: "PASTE_PROJECT_ID.firebaseapp.com",
-  projectId: "PASTE_PROJECT_ID",
-  storageBucket: "PASTE_PROJECT_ID.appspot.com",
-  messagingSenderId: "PASTE_SENDER_ID",
-  appId: "PASTE_APP_ID"
+  apiKey: "AIzaSyA9uBRzNtpWpLgVVj45eXJH0blx43t0nnY",
+  authDomain: "reminder-app-7e3fe.firebaseapp.com",
+  projectId: "reminder-app-7e3fe",
+  storageBucket: "reminder-app-7e3fe.firebasestorage.app",
+  messagingSenderId: "204760907640",
+  appId: "1:204760907640:web:fee8a32281b9231c59128d",
+  measurementId: "G-P7HBEL0Y9G"
 };
 
-// Cek apakah konfigurasi sudah diisi oleh pengguna
 function isFirebaseConfigured() {
-  return (
+  return Boolean(
     typeof firebaseConfig !== 'undefined' &&
     firebaseConfig.apiKey &&
     !firebaseConfig.apiKey.includes("PASTE_") &&

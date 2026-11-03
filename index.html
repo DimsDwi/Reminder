@@ -284,16 +284,15 @@ function updateDbBadge(connected, text) {
 }
 
 function getActiveFirebaseConfig() {
+  // Cek jika terdefinisi di firebase-config.js
+  if (typeof window.isFirebaseConfigured === 'function' && window.isFirebaseConfigured()) {
+    return window.firebaseConfig;
+  }
   // Cek jika tersimpan di localStorage browser
   try {
     const saved = JSON.parse(localStorage.getItem(FIREBASE_LOCAL_KEY));
     if (saved && saved.apiKey && saved.projectId) return saved;
   } catch(e) {}
-
-  // Cek jika terdefinisi di firebase-config.js
-  if (typeof window.isFirebaseConfigured === 'function' && window.isFirebaseConfigured()) {
-    return window.firebaseConfig;
-  }
   return null;
 }
 
