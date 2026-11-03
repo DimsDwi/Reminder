@@ -100,29 +100,38 @@
 <!-- Modal Pengaturan Database Firebase -->
 <div class="modal-back" id="dbModalBack">
   <div class="modal">
-    <h2>Database Antar Perangkat</h2>
-    <p>Hubungkan Firebase Firestore agar jadwal tersimpan di cloud dan otomatis muncul di komputer/HP mana saja.</p>
+    <h2>Database Antar Komputer</h2>
+    <p>Agar jadwal tidak hilang saat dibuka di komputer lain, sambungkan ke cloud database.</p>
     <div class="guide-box">
-      <strong>Cara dapatkan konfigurasi gratis (2 menit):</strong>
+      <strong>3 Langkah Cepat & Gratis:</strong>
       <ol>
         <li>Buka <a href="https://console.firebase.google.com/" target="_blank" style="color:var(--green);font-weight:700">Firebase Console</a> (login akun Google).</li>
-        <li>Buat proyek baru, lalu pilih <strong>Firestore Database</strong> -> klik <strong>Create database</strong> -> pilih <strong>Start in test mode</strong>.</li>
-        <li>Pilih ikon Web (<strong>&lt;/&gt;</strong>) untuk daftarkan aplikasi, lalu salin kode <code>firebaseConfig</code> ke bawah ini (atau simpan di berkas <code>firebase-config.js</code>).</li>
+        <li>Buat proyek baru lalu buka <strong>Firestore Database</strong> -> klik <strong>Create database</strong> -> pilih <strong>Start in test mode</strong>.</li>
+        <li>Klik ikon Web (<strong>&lt;/&gt;</strong>) untuk daftarkan aplikasi, lalu copy kode yang muncul dan paste langsung di bawah ini:</li>
       </ol>
     </div>
     <form id="dbConfigForm">
       <div class="field">
-        <label for="cfgApiKey">API Key</label>
-        <input id="cfgApiKey" required placeholder="AIzaSy...">
+        <label for="cfgRawSnippet">Tempel Kode Firebase (Langsung Copy-Paste Semua ke Sini):</label>
+        <textarea id="cfgRawSnippet" rows="5" placeholder="Contoh:&#10;const firebaseConfig = {&#10;  apiKey: &quot;AIzaSy...&quot;,&#10;  projectId: &quot;reminder-xxxx&quot;&#10;};"></textarea>
       </div>
-      <div class="field">
-        <label for="cfgProjectId">Project ID</label>
-        <input id="cfgProjectId" required placeholder="reminder-app-xxxx">
-      </div>
-      <div class="field">
-        <label for="cfgAppId">App ID (Opsional)</label>
-        <input id="cfgAppId" placeholder="1:123456789:web:abcdef">
-      </div>
+      <details style="margin-bottom:14px;font-size:12px;color:var(--muted)">
+        <summary style="cursor:pointer;font-weight:600">Atau isi manual satu per satu</summary>
+        <div style="margin-top:10px">
+          <div class="field">
+            <label for="cfgApiKey">API Key</label>
+            <input id="cfgApiKey" placeholder="AIzaSy...">
+          </div>
+          <div class="field">
+            <label for="cfgProjectId">Project ID</label>
+            <input id="cfgProjectId" placeholder="reminder-app-xxxx">
+          </div>
+          <div class="field">
+            <label for="cfgAppId">App ID (Opsional)</label>
+            <input id="cfgAppId" placeholder="1:123456789:web:abcdef">
+          </div>
+        </div>
+      </details>
       <div class="actions">
         <button type="button" class="cancel" id="dbCancelBtn">Tutup</button>
         <button class="save" type="submit">Simpan & Hubungkan</button>
@@ -429,15 +438,57 @@ $('#reminderForm').onsubmit = async e => {
   await saveReminder(data);
 };
 
+function parseFirebaseText(raw) {
+  if (!raw) return null;
+  const apiKeyMatch = raw.match(/apiKey["']?\s*:\s*["']([^"']+)["']/i);
+  const projectIdMatch = raw.match(/projectId["']?\s*:\s*["']([^"']+)["']/i);
+  const authDomainMatch = raw.match(/authDomain["']?\s*:\s*["']([^"']+)["']/i);
+  const appIdMatch = raw.match(/appId["']?\s*:\s*["']([^"']+)["']/i);
+
+  if (apiKeyMatch && projectIdMatch) {
+    return {
+      apiKey: apiKeyMatch[1].trim(),
+      projectId: projectIdMatch[1].trim(),
+      authDomain: authDomainMatch ? authDomainMatch[1].trim() : `${projectIdMatch[1].trim()}.firebaseapp.com`,
+      storageBucket: `${projectIdMatch[1].trim()}.appspot.com`,
+      appId: appIdMatch ? appIdMatch[1].trim() : undefined
+    };
+  }
+  return null;
+}
+
+$('#cfgRawSnippet').oninput = e => {
+  const parsed = parseFirebaseText(e.target.value);
+  if (parsed) {
+    $('#cfgApiKey').value = parsed.apiKey;
+    $('#cfgProjectId').value = parsed.projectId;
+    if (parsed.appId) $('#cfgAppId').value = parsed.appId;
+    toast('Format Firebase terdeteksi!');
+  }
+};
+
 $('#dbConfigForm').onsubmit = e => {
   e.preventDefault();
-  const cfg = {
-    apiKey: $('#cfgApiKey').value.trim(),
-    authDomain: `${$('#cfgProjectId').value.trim()}.firebaseapp.com`,
-    projectId: $('#cfgProjectId').value.trim(),
-    storageBucket: `${$('#cfgProjectId').value.trim()}.appspot.com`,
-    appId: $('#cfgAppId').value.trim() || undefined
-  };
+  let cfg = parseFirebaseText($('#cfgRawSnippet').value);
+  if (!cfg) {
+    const key = $('#cfgApiKey').value.trim();
+    const pid = $('#cfgProjectId').value.trim();
+    if (key && pid) {
+      cfg = {
+        apiKey: key,
+        authDomain: `${pid}.firebaseapp.com`,
+        projectId: pid,
+        storageBucket: `${pid}.appspot.com`,
+        appId: $('#cfgAppId').value.trim() || undefined
+      };
+    }
+  }
+
+  if (!cfg || !cfg.apiKey || !cfg.projectId) {
+    toast('Mohon masukkan kode Firebase yang valid');
+    return;
+  }
+
   localStorage.setItem(FIREBASE_LOCAL_KEY, JSON.stringify(cfg));
   closeDbModal();
   toast('Menghubungkan ke Firebase...');
